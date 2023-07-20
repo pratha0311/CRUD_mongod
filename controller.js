@@ -1,6 +1,10 @@
-const mongoose = require('mongoose')
-const cookieparser = require('cookie-parser')
+const mongoose = require("mongoose");
+const cookieparser = require("cookie-parser");
 
-exports.home = (req,res) =>{
-    res.send("This is home page")
-}
+exports.home = (req, res) => {
+  res.render("homepage.ejs");
+};
+
+exports.signuppage = (req, res) => {
+    res.render("signupPage");
+};
