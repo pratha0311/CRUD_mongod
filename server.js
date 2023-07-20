@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use("/", route);
 app.use(cookieparser());
-app.set('view engine', ejs);
+app.set('view engine', 'ejs');
 app.path("./view");
 
 mongoose
