@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="/signup" method="post">
+        <h3>ADD DETAILS OF USER</h3>
+
+        <hr />
+
+        <label for="firstname"><b>FIRST NAME</b></label>
+        <input
+          type="text"
+          placeholder="Enter First Name"
+          name="firstname"
+          id="firstname"
+          required
+        />
+
+        <label for="lastname"><b>LAST NAME</b></label>
+        <input
+          type="text"
+          placeholder="Enter Last Name"
+          name="lastname"
+          id="lastname"
+          required
+        />
+
+        <label for="phone"><b>Phone no</b></label>
+        <input
+          type="phone"
+          placeholder="Enter Phone Number"
+          name="phone"
+          id="phone"
+          required
+        />
+
+        <label for="emailid"><b>Email Id</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email Id"
+          name="emailid"
+          id="emailid"
+          required
+        />
+
+        <label for="password"><b>Password</b></label>
+        <input
+          type="text"
+          placeholder="Enter Password"
+          name="password"
+          id="password"
+          required
+        />
+
+        <div class="gender_g">
+          <strong>Gender</strong>
+          <input type="radio" name="gender" id="" value="Male" /> Male
+          <input type="radio" name="gender" id="" value="Female" /> Female
+        </div>
+        <button type="submit" class="registerbtn">ADD STUDENT</button>
+
+        <a href="./" style="color: black">BACK TO HOME PAGE</a> <br />
+      </form>
+    </div>
+  </body>
 </html>

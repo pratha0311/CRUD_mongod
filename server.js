@@ -7,6 +7,8 @@ const ejs= require('ejs')
 
 const app = express();
 app.use(express.json());
+const bp= require("body-parser")
+app.use(bp.urlencoded({ extended: true }))
 app.use("/", route);
 app.use(cookieparser());
 app.set('view engine', 'ejs');
