@@ -45,9 +45,8 @@ exports.signup = async (req, res) => {
     gender: gender,
   });
   await user.save();
-  res.status(201).json({ message: "USER SAVED!!", userid: id });
+  res.status(201).render('signeduppage', {name:firstname, id:id});
 };
-
 
 exports.signin = async (req, res) => {
   const { emailid, password } = req.body;
@@ -89,12 +88,8 @@ exports.signin = async (req, res) => {
     res
       .status(200)
       .cookie("jwt", refreshToken)
-      .json({
-        message: "USER LOGGEDIN"
-      });
+      .render("loggedinPage", { name: userExists.firstname });
   } catch (err) {
-    // return res.status(201).json({User: userExists, accesstoken:accesstoken});
-
     return res.send(err);
   }
 };
