@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
 var usermodel = require("./model");
 const bcrypt = require("bcrypt");
@@ -20,6 +19,10 @@ exports.signinpage = (req, res) => {
 
 exports.loggedin = (req, res) => {
   res.render("loggedin", { firstname: query.firstname });
+};
+
+exports.deletepage = (req, res) => {
+  res.render("deletepage");
 };
 
 exports.allusers = (req,res) =>{
@@ -94,9 +97,32 @@ exports.signin = async (req, res) => {
     );
     res
       .status(200)
-      .cookie("jwt", refreshToken)
+      .cookie("jwt", refreshToken, accesstoken)
       .render("loggedinPage", { name: userExists.firstname });
   } catch (err) {
     return res.send(err);
   }
 };
+
+
+exports.delete = async(req,res) => {
+  let {emailid,password}= req.body;
+  try{
+    const userExists = await usermodel.findOne({ emailid: emailid });
+    if (userExists == null) {
+      return res.status(404).json({ message: "INCORRECT EMAIL ID" });
+    }
+    const matchpass = await bcrypt.compare(password, userExists.password);
+    if (!matchpass) {
+      return res.status(404).json({ message: "INVALID PASSWORD" });
+    }
+    await usermodel.findOneAndDelete({'emailid':emailid});
+  }
+  catch(error){
+      console.log(error);
+  }
+  res.send({
+      "status": "OK",
+      "message": "User data is DELETED!!"
+  })
+}
