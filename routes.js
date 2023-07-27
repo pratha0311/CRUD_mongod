@@ -6,6 +6,7 @@ routes.get("/", controller.home);
 routes.get("/signuppage", controller.signuppage);
 routes.get("/loggedin", controller.loggedin);
 routes.get("/signinpage", controller.signinpage);
+routes.get("/all-users",controller.allusers);
 
 
 

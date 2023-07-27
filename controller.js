@@ -22,6 +22,13 @@ exports.loggedin = (req, res) => {
   res.render("loggedin", { firstname: query.firstname });
 };
 
+exports.allusers = (req,res) =>{
+  //usermodel.find({}).select(['id','firstname']).then((users) => {
+  usermodel.find({}).then((users) => {
+    res.render("allusers",{"users":users});
+})
+}
+
 exports.signup = async (req, res) => {
   const { firstname, lastname, phone, emailid, password, gender } = req.body;
   let hashedpass = await bcrypt.hash(password, 8);
